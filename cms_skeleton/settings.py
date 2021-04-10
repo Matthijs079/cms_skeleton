@@ -42,7 +42,7 @@ SITE_ID = 1
 SECRET_KEY = env('SECRET_KEY', default="_jwrwyn55pbmw_j#)az2(13zbwo07e8e$6$l5dhmik*&bx1567")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['188.166.89.127']
 
