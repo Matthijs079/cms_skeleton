@@ -45,8 +45,7 @@ SECRET_KEY = env('SECRET_KEY', default="_jwrwyn55pbmw_j#)az2(13zbwo07e8e$6$l5dhm
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['188.166.89.127']
 
 # Application definition
 
