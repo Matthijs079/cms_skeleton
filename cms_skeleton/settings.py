@@ -13,7 +13,6 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 from pathlib import Path
 import os
 import environ
-from icecream import ic 
 
 
 root = (
@@ -43,10 +42,9 @@ SITE_ID = 1
 SECRET_KEY = env('SECRET_KEY', default="_jwrwyn55pbmw_j#)az2(13zbwo07e8e$6$l5dhmik*&bx1567")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['188.166.89.127', 'matthijsvanderharst.nl', 'www.matthijsvanderharst.nl']
 
 # Application definition
 
@@ -95,6 +93,16 @@ MIDDLEWARE = [
     'cms.middleware.utils.ApphookReloadMiddleware'
 ]
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.i18n',
+    'django.core.context_processors.request',
+    'django.core.context_processors.media',
+    'django.core.context_processors.static',
+    'cms.context_processors.media',
+    'sekizai.context_processors.sekizai',
+)
+
 ROOT_URLCONF = 'cms_skeleton.urls'
 
 TEMPLATES = [
@@ -130,12 +138,24 @@ WSGI_APPLICATION = 'cms_skeleton.wsgi.application'
 
 DB_CONF = env("DATABASE_URL", default="sqlite:///db.sqlite3")
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+if DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'cms_example',
+            'USER': 'matthijs',
+            'PASSWORD': env("DATABASE_PASSWORD"),
+            'HOST': 'localhost',
+            'PORT': '',
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -178,9 +198,10 @@ X_FRAME_OPTIONS = 'SAMEORIGIN'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 STATIC_URL = '/static/'
 MEDIA_URL = "/media/"
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 THUMBNAIL_HIGH_RESOLUTION = True
 
