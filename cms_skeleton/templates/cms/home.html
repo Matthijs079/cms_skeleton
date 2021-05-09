@@ -1,5 +1,15 @@
 {% extends "cms/base.html" %}
+{% load cms_tags %}
 
 {% block page_title %}
-  Homepage
+  Home
 {% endblock page_title %}
+
+{% block content %}
+<div class="container">
+  <div class="container__inner">
+    <h1> Dit is een tekstje</h1>
+    {% placeholder "content" %}
+  </div>
+</div>
+{% endblock content %}

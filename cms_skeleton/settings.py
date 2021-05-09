@@ -27,6 +27,8 @@ env.read_env(root(".env"))
 
 DEBUG = env('DEBUG')
 
+NODE_ENV = env('NODE_ENV')
+
 PROJECT_SLUG = env("PROJECT_SLUG", default="cms_skeleton")
 project_dir = root.path(PROJECT_SLUG)
 
@@ -42,9 +44,8 @@ SITE_ID = 1
 SECRET_KEY = env('SECRET_KEY', default="_jwrwyn55pbmw_j#)az2(13zbwo07e8e$6$l5dhmik*&bx1567")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
 
-ALLOWED_HOSTS = ['188.166.89.127', 'matthijsvanderharst.nl', 'www.matthijsvanderharst.nl']
+ALLOWED_HOSTS = ['188.166.89.127', 'matthijsvanderharst.nl', 'www.matthijsvanderharst.nl', '127.0.0.1', 'localhost']
 
 # Application definition
 
@@ -198,10 +199,13 @@ X_FRAME_OPTIONS = 'SAMEORIGIN'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 STATIC_URL = '/static/'
 MEDIA_URL = "/media/"
+
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+
+STATICFILES_DIRS = [project_dir("static", required=True)]
 
 THUMBNAIL_HIGH_RESOLUTION = True
 
