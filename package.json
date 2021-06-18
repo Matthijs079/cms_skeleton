@@ -1,0 +1,26 @@
+{
+  "name": "cms_skeleton",
+  "version": "1.0.0",
+  "description": "This is a small project form test and learning purposes.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Matthijs079/cms_skeleton.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Matthijs079/cms_skeleton/issues"
+  },
+  "homepage": "https://github.com/Matthijs079/cms_skeleton#readme",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-filter": "^7.0.0",
+    "gulp-sass": "^4.1.0",
+    "gulp-sass-inheritance": "^1.1.2",
+    "node-sass": "^5.0.0"
+  }
+}
