@@ -41,11 +41,12 @@ SITE_ID = 1
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env('SECRET_KEY', default="_jwrwyn55pbmw_j#)az2(13zbwo07e8e$6$l5dhmik*&bx1567")
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+if DEBUG:
+    DEBUG_HOSTS = ['127.0.0.1:8000', '127.0.0.1']
 
-ALLOWED_HOSTS = ['188.166.89.127', 'matthijsvanderharst.nl', 'www.matthijsvanderharst.nl']
+PRDUCTION_HOSTS = ['188.166.89.127', 'matthijsvanderharst.nl', 'www.matthijsvanderharst.nl']
 
+ALLOWED_HOSTS = DEBUG_HOSTS + PRDUCTION_HOSTS
 # Application definition
 
 INSTALLED_APPS = [
@@ -74,6 +75,8 @@ INSTALLED_APPS = [
     'djangocms_googlemap',
     'djangocms_snippet',
     'djangocms_style',
+
+    'djangocms_skills.apps.DjangocmsSkillsConfig',
 
 ]
 
